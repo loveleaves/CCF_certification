@@ -19,42 +19,24 @@
 　　对于所有评测用例，输入的数字不超过30个，保证0正好出现一次且为最后一个数字。
 '''
 
-'''
-#以下时90分答案：
-li = input().split()
-sum=0
-a = range(len(li))
-for i in a:
-    if li[i] == '1':
-        sum += 1
-        i += 1
-    elif li[i] == '2':
-        n = 2
-        if i == 1:
-            pass
-        else:
-            j = i-1
-            while j>=0:
-                if li[j] == '2':
-                    n += 2
-                    j -= 1
-                else:
-                    break
-        sum += n
-        i += 1
-print(sum)
-'''
 #以下时100分答案：
-sore,boostsore  = 0,2
-nums=list(input().split())
-for i in nums:
-    if i == '1':
-        sore += 1
-        boostsore = 2
-    elif i == '2':
-        sore = sore + boostsore
-        boostsore += 2
-    elif i == '0':
-        break
-print(sore)
+sum,temp = 0,1
+n = input().split()
+for i in range(len(n)):
+    if n[i]=='1':
+        temp = 1
+        sum += 1
+    elif n[i]=='2':
+        sum += 2*temp
+        temp += 1
+print(sum)
+"""
+#迭代实现，从1开始
+temp=list(map(int,input().split()))
+for i in range(1,len(temp)):#从第二个数开始迭代
+    if temp[i]>1:#只更新大于等于2的数
+        if temp[i-1]>=2:
+            temp[i]=temp[i-1]+2
+print(sum(temp))#所有分数求和
+"""
 
